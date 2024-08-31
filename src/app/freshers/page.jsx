@@ -4,7 +4,7 @@ import React from 'react'
 const Freshers = () => {
   return (
     <div>
-        <Jobcard />
+      dsdad
     </div>
   )
 }

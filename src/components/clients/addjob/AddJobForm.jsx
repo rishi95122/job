@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import styles from './addjob.module.css'
 import { addJobHandler } from '@/lib/actions';
+import Image from 'next/image';
 const AddJobForm = () => {
     const [image, setImage] = useState(null);
 
@@ -33,7 +34,7 @@ const AddJobForm = () => {
         onChange={handleImageChange}
         className={styles.input}
       />
-      {image && <img src={image} alt="Uploaded" className={styles.previewImage} />}
+      {image && <Image width={100} height={100} src={image} alt="Uploaded" className={styles.previewImage} />}
     </div>
 
     <div className={styles.formGroup}>

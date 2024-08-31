@@ -1,45 +1,121 @@
-"use client"
-import React, { useEffect, useState } from 'react'
-import styles from "./single.module.css"
-import Link from 'next/link'
-const SingleJob = ({params}) => {
- const [job,setJob]=useState()
-    const fetchSinglePost=async()=>{
-        const data =await fetch(`/api/jobs/getsinglejob/${params.id}`)
-            const res= await data.json()
-            setJob(res)
-            console.log(res)
+// "use client"
+// import React, { useEffect, useState } from 'react'
+// import styles from "./single.module.css"
+// import Link from 'next/link'
+// const SingleJob = ({params}) => {
+//  const [job,setJob]=useState()
+//     const fetchSinglePost=async()=>{
+//         const data =await fetch(`/api/jobs/getsinglejob/${params.id}`)
+//             const res= await data.json()
+//             setJob(res)
+//             console.log(res)
+//     }
+//     useEffect(()=>{
+// fetchSinglePost()
+//     },[])
+
+//   return (
+//     <div className={styles.container}>
+//         <div className={styles.detailscontainer}>
+//             <h1>{job?.title}</h1>
+//             <div className={styles.jobcontainer}>
+//                 <span>{job?.type}</span>
+//                 <span>{job?.experience}</span>
+//             </div>
+//             <p className={styles.date}>{job?.createdAt.toString().slice(0,10)}</p>
+//             <div className={styles.jobdetails}>
+//             <h2>Job details</h2>
+//             <p>{job?.jobdetails}</p>
+       
+//             </div>
+//             <div className={styles.requirements}>
+//                 <h2>Requirements</h2>
+//                 {
+//                   job?.requirements&&  job?.requirements?.split("•").slice(1).map((item,idx)=>{
+//                         return  <p key={idx}>•{item}</p>
+//                     })
+//                 }
+//             </div>
+//             <Link href={job?.link||""} > <button>Apply here</button></Link>
+//            </div>
+//     </div>
+//   )
+// }
+
+// export default SingleJob
+
+"use client";
+import React, { useEffect, useState } from "react";
+import styles from "./single.module.css";
+import Link from "next/link";
+
+export async function generateStaticParams() {
+  // Fetch all jobs to generate static paths
+  const response = await fetch('https://your-api/jobs');
+  const jobs = await response.json();
+
+  // Generate paths for each job
+  return jobs.map((job) => ({
+    id: job.id.toString(),  // Ensure id is a string
+  }));
+}
+
+const SingleJob = ({ params }) => {
+  const [job, setJob] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  const fetchSinglePost = async () => {
+    try {
+      const response = await fetch(`/api/jobs/getsinglejob/${params.id}`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch job data");
+      }
+      const res = await response.json();
+      setJob(res);
+    } catch (error) {
+      console.error("Error fetching job data:", error);
+    } finally {
+      setLoading(false);
     }
-    useEffect(()=>{
-fetchSinglePost()
-    },[])
+  };
+
+  useEffect(() => {
+    fetchSinglePost();
+  }, [params.id]);
+
+  if (loading) {
+    return <div className={styles.container}>Loading...</div>;
+  }
 
   return (
     <div className={styles.container}>
-        <div className={styles.detailscontainer}>
-            <h1>{job?.title}</h1>
-            <div className={styles.jobcontainer}>
-                <span>{job?.type}</span>
-                <span>{job?.experience}</span>
-            </div>
-            <p className={styles.date}>{job?.createdAt.toString().slice(0,10)}</p>
-            <div className={styles.jobdetails}>
-            <h2>Job details</h2>
-            <p>{job?.jobdetails}</p>
-       
-            </div>
-            <div className={styles.requirements}>
-                <h2>Requirements</h2>
-                {
-                  job?.requirements&&  job?.requirements?.split("•").slice(1).map((item,idx)=>{
-                        return  <p key={idx}>•{item}</p>
-                    })
-                }
-            </div>
-            <Link href={job?.link||""} > <button>Apply here</button></Link>
-           </div>
+      <div className={styles.detailscontainer}>
+        <h1>{job?.title}</h1>
+        <div className={styles.jobcontainer}>
+          <span>{job?.type}</span>
+          <span>{job?.experience}</span>
+        </div>
+        <p className={styles.date}>{job?.createdAt?.toString().slice(0, 10)}</p>
+        <div className={styles.jobdetails}>
+          <h2>Job details</h2>
+          <p>{job?.jobdetails}</p>
+        </div>
+        <div className={styles.requirements}>
+          <h2>Requirements</h2>
+          {job?.requirements &&
+            job?.requirements
+              ?.split("•")
+              .slice(1)
+              .map((item, idx) => {
+                return <p key={idx}>•{item}</p>;
+              })}
+        </div>
+        <Link href={job?.link || ""}>
+          <button>Apply here</button>
+        </Link>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default SingleJob
+export default SingleJob;

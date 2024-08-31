@@ -1,0 +1,40 @@
+.conatiner{
+padding: 20px 0px;
+transition: transform 0.5s ease-in-out;
+}
+.closed{
+    transform: translateX(-100%);
+}
+.navlinks{
+    display: flex;
+    gap:10px;
+    flex-direction: column;
+    position: relative;
+}
+.close{
+    margin: 3px 10px;
+    border: 1px solid var(--bgSoft);
+    border-radius: 10px;
+    &:hover{
+           
+        transition: all ease-in-out 0.5s;
+        border: 1px solid gray;
+       
+    }
+}
+    .navlink{
+        font-size: larger;
+        padding: 10px 20px;
+        border-radius: 10px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        border: 1px solid var(--bgSoft);
+           font-weight: 600;
+        &:hover{
+           
+            transition: all ease-in-out 0.5s;
+            border: 1px solid gray;
+           
+        }
+    }

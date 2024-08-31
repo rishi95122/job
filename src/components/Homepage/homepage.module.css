@@ -1,0 +1,31 @@
+.container{
+    display: flex;
+align-items: center;
+    justify-content: center;
+  height: 100vh;
+
+  .details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+gap:100px;
+height: 40%;
+  }
+  .h1{
+    font-size: 70px;
+    text-align: center;
+  }
+
+  .btn{
+    padding: 30px 60px;
+    font-size: xx-large;
+    font-weight: 800;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 1px 1px 100px rgb(0, 113, 218);
+    
+
+
+  }
+}

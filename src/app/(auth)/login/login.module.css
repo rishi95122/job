@@ -1,0 +1,58 @@
+.logincontainer h2 {
+    margin-bottom: 1.5rem;
+  
+    text-align: center;
+}
+.logincontainer{
+    width:50%;
+    margin:50px auto;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  border: 1px solid gainsboro;
+  padding: 30px;
+  border-radius: 20px;
+}
+.inputgroup {
+    margin-bottom: 1.5rem;
+    text-align: left;
+    width: 100%;
+}
+
+.inputgroup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    
+}
+
+.inputgroup input {
+    width: 90%;
+    padding: 0.75rem;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+
+}
+
+.button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 20px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}

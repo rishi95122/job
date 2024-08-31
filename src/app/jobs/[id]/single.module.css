@@ -1,0 +1,55 @@
+.container{
+    width:60%;
+    margin: 40px auto;
+}
+
+.detailscontainer{
+display: flex;
+flex-direction: column;
+gap:30px;
+}
+.date {
+    color: rgb(172, 172, 172);
+   margin: -10px 0px;
+    }
+.detailscontainer button{
+    background-color: var(--btn);
+    width: max-content;
+    color: white;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    }
+
+.jobcontainer{
+    display: flex;
+    gap:10px;
+    }
+    
+.jobcontainer span{
+    background-color: var(--btn);
+    color: white;
+    padding: 5px 10px;
+    font-size: small;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 10px;
+}
+.jobdetails p{
+margin-top: 5px;
+font-size: larger;
+
+}
+
+.requirements p{
+    margin-top: 5px;
+    font-size: larger;
+}
+
+@media (max-width:670px){
+    .container{
+        width: 90%;
+    }
+}

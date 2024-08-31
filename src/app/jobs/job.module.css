@@ -1,0 +1,23 @@
+.container{
+   
+    min-height: 100vh;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+   
+}
+.jobContainer{
+width: 75%;
+display: flex;
+margin: 40px auto;
+flex-direction: column;
+gap: 20px;
+}
+@media (max-width:670px){
+       
+    .jobContainer{
+        width: 90%;
+        margin: 40px 10px ;
+    }
+}

@@ -25,14 +25,15 @@ export const LoginHandler=async(username, password)=>{
    }
 
    export const addJobHandler=async(title,jobType,experience,jobdetails,requirements,link)=>{
-      try { 
+
+    try { 
           connectDb()
           const job=await jobsSchema.create({
             title,type:jobType,experience,jobdetails,requirements,link
           })
           if(!job) throw new Error("there is an error")
           
-            console.log("Added")
+        return { status: 200, msg: "Added"}
 
       } catch (error) {
        console.log(error)

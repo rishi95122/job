@@ -1,27 +1,15 @@
-"use client"
-import React, { useEffect, useState } from 'react'
+
+
 import style from './job.module.css'
 import Jobcard from '@/components/jobcard/Jobcard'
 import Link from 'next/link'
 
 
 
-const Jobs = () => {
-  const [jobs,setJobs]=useState()
-  useEffect(()=>{
-   const fetchData=async()=>{
-    try {
-      const res= await fetch("/api/jobs/getjob")
-      const data= await res.json()
-      setJobs(data)
-    
-    } catch (error) {
-      
-    }
-   }
-
-   fetchData()
-  },[])
+const Jobs = async({}) => {
+  const res= await fetch("http://localhost:3000/api/jobs/getjob",{cache:"no-cache"})
+  const jobs= await res.json()
+  console.log(jobs)
   return (
     <div className={style.container}>
       <div className={style.jobContainer}>

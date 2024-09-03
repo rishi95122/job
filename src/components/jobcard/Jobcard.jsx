@@ -5,10 +5,10 @@ const arr=[{
   img:'/job1.avif',
 },
 {
-  img:'/job2.avif',
+  img:'/job1.avif',
 },
 {
-  img:'/job3.avif',
+  img:'/job1.avif',
 }]
 
 const Jobcard = ({item,index}) => {

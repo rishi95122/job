@@ -3,9 +3,10 @@ import React, { useState } from 'react'
 import styles from './addjob.module.css'
 import { addJobHandler } from '@/lib/actions';
 import Image from 'next/image';
+import { redirect, useRouter } from 'next/navigation';
 const AddJobForm = () => {
     const [image, setImage] = useState(null);
-
+  const router =useRouter()
     const handleImageChange = (e) => {
       setImage(URL.createObjectURL(e.target.files[0]));
     };
@@ -16,13 +17,16 @@ const AddJobForm = () => {
     };
   return (
     <form className={styles.jobForm} action={async(Formdata)=>{
+      console.log(Formdata)  
         const title =  Formdata.get("title")
         const jobType =  Formdata.get("jobType")
         const experience =  Formdata.get("experience")
         const jobdetails =  Formdata.get("jobdetails")
         const requirements =  Formdata.get("requirements")
         const link =  Formdata.get("link")
-      await addJobHandler(title,jobType,experience,jobdetails,requirements,link)
+    const res=  await addJobHandler(title,jobType,experience,jobdetails,requirements,link)
+    if(res)
+    router.push("/jobs")
     }}>
     <div className={styles.formGroup}>
       <label htmlFor="image">Upload Image</label>
@@ -61,12 +65,12 @@ const AddJobForm = () => {
     <div className={styles.formGroup}>
       <label htmlFor="experience">Experience</label>
       <select id="experience"  name="experience" required className={styles.input}>
-        <option value="full-time">Freshers</option>
-        <option value="part-time">1 years</option>
-        <option value="part-time">2 years</option>
-        <option value="part-time">3 years</option>
-        <option value="part-time">4 years</option>
-        <option value="part-time">5 years</option>
+        <option value="Freshers">Freshers</option>
+        <option value="1 years">1 years</option>
+        <option value="2 years">2 years</option>
+        <option value="3 year">3 years</option>
+        <option value="4 year">4 years</option>
+        <option value="5 years">5 years</option>
       </select>
     </div>
     <div className={styles.formGroup}>

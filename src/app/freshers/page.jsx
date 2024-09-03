@@ -5,7 +5,7 @@ import style from './fresher.module.css'
 import Link from 'next/link'
 
 const Freshers = async({}) => {
-  const res= await fetch(`http://localhost:3000/api/jobs/getjob?experience=fresher`,{cache:"no-cache"})
+  const res= await fetch(`${process.env.DOMAIN_NAME}/api/jobs/getjob?experience=fresher`,{cache:"no-cache"})
   const jobs= await res.json()
 
 

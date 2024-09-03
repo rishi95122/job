@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 
 const Jobs = async({}) => {
-  const res= await fetch("http://localhost:3000/api/jobs/getjob",{cache:"no-cache"})
+  const res= await fetch(`${process.env.DOMAIN_NAME}/api/jobs/getjob`,{cache:"no-cache"})
   const jobs= await res.json()
   console.log(jobs)
   return (

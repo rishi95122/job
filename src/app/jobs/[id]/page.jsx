@@ -1,18 +1,13 @@
-"use client"
-import React, { useEffect, useState } from 'react'
+
+
 import styles from "./single.module.css"
 import Link from 'next/link'
-const SingleJob = ({params}) => {
- const [job,setJob]=useState()
-    const fetchSinglePost=async()=>{
-        const data =await fetch(`/api/jobs/getsinglejob/${params.id}`)
-            const res= await data.json()
-            setJob(res)
-            console.log(res)
-    }
-    useEffect(()=>{
-fetchSinglePost()
-    },[])
+const SingleJob = async({params}) => {
+
+        const data =await fetch(`${process.env.DOMAIN_NAME}/api/jobs/getsinglejob/${params.id}`)
+            const job= await data.json()
+         
+
 
   return (
     <div className={styles.container}>

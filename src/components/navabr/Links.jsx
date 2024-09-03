@@ -20,7 +20,7 @@ const Links = ({ user }) => {
   return (
     <div className={styles.navlinksContainer}>
       <div className={styles.navlinks}>
-        <Link className={styles.navlink} href="/jobs">
+        <Link className={styles.navlink} href="/">
           Jobs
         </Link>
         <Link className={styles.navlink} href="/freshers">

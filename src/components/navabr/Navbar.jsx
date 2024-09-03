@@ -12,7 +12,7 @@ const Navbar = async() => {
   return (
     <div className={styles.container}>
         <div className={styles.logocontainer}>
-          <Link href={"/jobs"}>
+          <Link href={"/"}>
           <h1><MdOutlineWork /></h1>
           </Link>
             
